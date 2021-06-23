@@ -8,39 +8,23 @@ const Fitness = new Schema({
       {
           type:{
           type:String,
-          trim:true,
-          required:"enter a type"
+          required:true
       },
       name: {
           type:String,
-          trim:true,
-          required:"enter a name"
+          required:true
       },
       duration:{
           type:Number,
-          trim:true,
-          required:"enter a duration"
+          required:true
 
       },
-      weight:{
-        type:Number,
-        trim:true,
-      },
-      reps:{
-        type:Number, 
-        trim:true,
-      },             //Not sure if this is correct!?
-      sets:{
-        typr:Number,
-        trim:true,
-      },
-      distance:{
-        type:Number,
-        trim:true,
+      weight:Number,
+      reps:Number,              //Not sure if this is correct!?
+      sets:Number,
+      distance:Number,
     }
-  }
-  ],
-
+  ]
 });
 //model represents structure of the document
 const Workout = mongoose.model("Workout", Fitness);
