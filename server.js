@@ -1,31 +1,37 @@
-const express = require("express");
-const mongoose  = require("mongoose");
-//library that logs data
-//express middleware
-//everytimes when server breaks or throws exception, morgan logs it automatically
-//below creating instance for morgan
-const logger = require("morgan");
-const {connect} = require('./database/connect');
-require('dotenv').config()
-const PORT = process.env.PORT || 3000;
-connect();
-
+const express = require('express');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 const app = express();
+// const compression = require('compression');
 
-app.use(express.urlencoded({extended:true}));
+// Port
+const PORT = process.env.PORT || 3000;
+
+
+// Require the models folder
+const db = require('./models');
+
+// Connect to Mongoose db and port
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workoutdb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+
+
+// Middleware
+
+// app.use(compression());
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
-app.use(logger("dev"));
+// Routes
 
-app.use(express.static("public"));
-
-//routes 
-app.use(require("./routes/htmlRoutes"));
-app.use(require("./routes/apiRoutes"));
-
-
-
-
+require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 // connecting to database
 //creating new instance of mongoDB using mongojs library
