@@ -18,8 +18,14 @@ app.use(express.static("public"));
 app.use(require("./routes/htmlRoutes"));
 app.use(require("./routes/apiRoutes"));       // this time we will have the routes files so we dont need to write any Get,Post,Est.. here
 
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnessdb", { useNewUrlParser: true });
-
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnessdb", 
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}
+);
 //connecting to dtatbase
 //creating new instance of mongoDB using mongojs library
 app.listen(PORT, () => {
