@@ -1,31 +1,43 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Fitness = new Schema({
-  day:{type:Date,default:Date.now},          // this is going to display the cuurent date
-
-  exercises:[
-      {
-          type:{
-          type:String,
-          required:true
+  day: {
+    type: Date,
+    default: () => new Date()
+  },
+  exercises: [
+    {
+      type: {
+        type: String,
+        trim: true,
+        required: 'Enter your exercise type'
       },
       name: {
-          type:String,
-          required:true
+        type: String,
+        required: 'Enter a name'
       },
-      duration:{
-          type:Number,
-          required:true
-
+      duration: {
+        type: Number,
+        required: 'Enter a number'
       },
-      weight:Number,
-      reps:Number,              //Not sure if this is correct!?
-      sets:Number,
-      distance:Number,
+      weight: {
+        type: Number
+      },
+      reps: {
+        type: Number
+      },
+      sets: {
+        type: Number
+      },
+      distance: {
+        type: Number
+      }
     }
   ]
 });
+
+
 //model represents structure of the document
 const Workout = mongoose.model("Workout", Fitness);
 
