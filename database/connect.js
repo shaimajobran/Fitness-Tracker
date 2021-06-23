@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 function connect(){
-    const connection = mongoose.connect(process.env.MONGOFB_fitness,{
+    const connection = mongoose.connect(process.env.MONGOBD_Fitness,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

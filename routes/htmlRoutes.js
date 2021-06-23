@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 
-//get index.html page
+//get index.html page 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,"../public/index.html"));
 });
