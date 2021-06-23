@@ -11,6 +11,6 @@ function connect(){
         console.log('err' + err);
     })
 }
-module.exports={connect,}
+module.exports={connect}
 
 //I can add the connection to the server I dont need to have this !!
