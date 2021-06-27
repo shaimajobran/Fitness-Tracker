@@ -9,7 +9,7 @@ This workout tracker  app will help you to keep track of your fitness goal.
 ## Deployed Link
 
 Heroku Link: <br  />
- <br  />
+https://guarded-hollows-80756.herokuapp.com/ <br  />
 Github Link: <br  />
  https://github.com/shaimajobran/Fitness-Tracker<br  />
 
